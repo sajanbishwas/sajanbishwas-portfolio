@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Md. Sajan Bishwas | PhD Student in Public Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#07111c;--surface:#0d1e2e;--card:#102437;--card2:#142a3e;
+  --teal:#00c9b1;--teal2:#00a896;--gold:#e2b04a;--cream:#eef0f4;
+  --text:#cdd6e0;--muted:#6b7f92;--border:rgba(0,201,177,0.15);
+  --red:#e05c5c;--radius:10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--teal2);border-radius:3px}
+
+/* ─── TOP NAV ─── */
+#topnav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 4%;
+  background:rgba(7,17,28,0.92);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-brand{
+  display:flex;align-items:center;gap:.9rem;cursor:pointer;
+}
+.nav-avatar{
+  width:40px;height:40px;border-radius:50%;
+  border:2px solid var(--teal);overflow:hidden;
+  background:var(--card);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;position:relative;cursor:pointer;
+}
+.nav-avatar img{width:100%;height:100%;object-fit:cover;display:none}
+.nav-avatar .avatar-placeholder{font-size:.65rem;color:var(--teal);text-align:center;line-height:1.2;padding:4px}
+.nav-avatar input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.nav-name-block{}
+.nav-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--cream);line-height:1.1}
+.nav-dept{font-size:.65rem;color:var(--muted);letter-spacing:.04em}
+.nav-links{display:flex;gap:.2rem;list-style:none;flex-wrap:wrap}
+.nav-links li a, .nav-links li button{
+  background:none;border:none;font-family:'Outfit',sans-serif;
+  color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+  padding:.4rem .7rem;border-radius:4px;transition:all .2s;
+}
+.nav-links li a:hover,.nav-links li button:hover{color:var(--teal);background:rgba(0,201,177,.08)}
+.nav-links li a.active,.nav-links li button.active{color:var(--teal);background:rgba(0,201,177,.12)}
+
+/* ─── PAGE SYSTEM ─── */
+.page{display:none;padding-top:70px;min-height:100vh;animation:pageFade .4s ease}
+.page.active{display:block}
+@keyframes pageFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── SECTION HEADERS ─── */
+.sec-wrap{max-width:1100px;margin:0 auto;padding:3.5rem 4% 5rem}
+.sec-tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:700;color:var(--cream);margin-bottom:2.5rem;line-height:1.1}
+.sec-title::after{content:'';display:block;width:50px;height:2px;background:var(--teal);margin-top:.7rem}
+
+/* ─── HERO ─── */
+#pg-home{background:var(--bg)}
+.hero-wrap{
+  max-width:1100px;margin:0 auto;padding:3rem 4% 4rem;
+  display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;min-height:calc(100vh - 70px);
+}
+.hero-bg-glow{
+  position:fixed;top:0;right:0;width:60vw;height:100vh;pointer-events:none;
+  background:radial-gradient(ellipse 70% 60% at 80% 30%,rgba(0,201,177,.08) 0%,transparent 70%);
+  z-index:0;
+}
+.hero-left{position:relative;z-index:1}
+.hero-chip{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  color:var(--teal);border:1px solid var(--teal);
+  padding:.3rem .9rem;border-radius:20px;margin-bottom:1.6rem;
+  animation:fadeUp .7s .1s both;
+}
+.hero-chip span{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,5vw,4.2rem);font-weight:700;
+  color:var(--cream);line-height:1.0;margin-bottom:.3rem;
+  animation:fadeUp .7s .2s both;
+}
+.hero-name em{color:var(--teal);font-style:italic}
+.hero-role{font-size:1rem;color:var(--gold);font-weight:500;margin-bottom:.3rem;animation:fadeUp .7s .3s both}
+.hero-dept{font-size:.85rem;color:var(--muted);margin-bottom:1.8rem;line-height:1.5;animation:fadeUp .7s .35s both}
+.hero-desc{font-size:.92rem;color:var(--text);line-height:1.85;max-width:520px;margin-bottom:2.2rem;animation:fadeUp .7s .4s both}
+.hero-actions{display:flex;gap:.9rem;flex-wrap:wrap;animation:fadeUp .7s .5s both;margin-bottom:2rem}
+.btn-prim{background:var(--teal);color:var(--bg);padding:.7rem 1.8rem;border:none;border-radius:5px;font-family:'Outfit',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.05em;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-prim:hover{background:#00dfc4;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,201,177,.3)}
+.btn-out{background:transparent;color:var(--teal);padding:.7rem 1.8rem;border:1px solid var(--teal);border-radius:5px;font-family:'Outfit',sans-serif;font-weight:500;font-size:.82rem;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-out:hover{background:rgba(0,201,177,.1);transform:translateY(-2px)}
+.hero-links{display:flex;gap:1.2rem;align-items:center;animation:fadeUp .7s .6s both}
+.hero-link{display:flex;align-items:center;gap:.4rem;color:var(--muted);text-decoration:none;font-size:.8rem;transition:color .2s}
+.hero-link:hover{color:var(--teal)}
+
+/* Profile Card */
+.profile-card{
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:2rem;text-align:center;position:relative;z-index:1;
+  animation:fadeUp .7s .4s both;
+}
+.profile-pic-wrap{
+  width:150px;height:150px;border-radius:50%;
+  border:3px solid var(--teal);overflow:hidden;
+  margin:0 auto 1.2rem;background:var(--card2);
+  position:relative;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.profile-pic-wrap img{width:100%;height:100%;object-fit:cover;display:none;position:absolute;inset:0}
+.profile-pic-placeholder{display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--muted)}
+.profile-pic-placeholder svg{width:40px;height:40px;opacity:.5}
+.profile-pic-placeholder span{font-size:.72rem}
+.profile-pic-wrap input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.profile-pic-wrap:hover::after{content:'📷 Change Photo';position:absolute;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--teal);border-radius:50%}
+.profile-fullname{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--cream);margin-bottom:.2rem}
+.profile-role-tag{font-size:.75rem;color:var(--gold);margin-bottom:.2rem}
+.profile-dept-tag{font-size:.72rem;color:var(--muted);margin-bottom:1rem;line-height:1.4}
+.profile-stats{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1rem}
+.pstat{background:var(--card2);border-radius:8px;padding:.8rem .5rem;text-align:center}
+.pstat-n{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--teal);line-height:1}
+.pstat-l{font-size:.65rem;color:var(--muted);margin-top:.2rem}
+
+/* ─── ABOUT PAGE + SUB-TABS ─── */
+.subtab-bar{
+  display:flex;gap:.3rem;margin-bottom:2.5rem;
+  border-bottom:1px solid var(--border);padding-bottom:0;
+  flex-wrap:wrap;
+}
+.stab{
+  background:none;border:none;font-family:'Outfit',sans-serif;
+  font-size:.8rem;font-weight:500;color:var(--muted);
+  padding:.6rem 1.2rem;cursor:pointer;border-bottom:2px solid transparent;
+  margin-bottom:-1px;transition:all .2s;letter-spacing:.03em;
+}
+.stab:hover{color:var(--teal)}
+.stab.active{color:var(--teal);border-bottom-color:var(--teal)}
+.subtab-content{display:none}
+.subtab-content.active{display:block;animation:pageFade .3s ease}
+
+/* Research Memo */
+.memo-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem}
+.memo-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--cream);margin-bottom:.8rem}
+.memo-body{font-size:.9rem;color:var(--text);line-height:1.85}
+.memo-tag{display:inline-block;font-size:.68rem;font-family:'JetBrains Mono',monospace;background:rgba(0,201,177,.1);color:var(--teal);border:1px solid var(--border);padding:.2rem .6rem;border-radius:3px;margin:.2rem .2rem 0 0}
+
+/* PhD Journey Timeline */
+.journey-wrap{position:relative;padding-left:2.5rem}
+.journey-wrap::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--teal),var(--gold),var(--teal))}
+.journey-item{position:relative;margin-bottom:2.5rem}
+.journey-dot{position:absolute;left:-2.9rem;top:.3rem;width:14px;height:14px;border-radius:50%;border:2px solid var(--teal);background:var(--bg)}
+.journey-dot.gold{border-color:var(--gold);background:var(--gold)}
+.journey-dot.filled{background:var(--teal)}
+.j-year{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--teal);letter-spacing:.1em;margin-bottom:.3rem}
+.j-event{font-size:1rem;font-weight:600;color:var(--cream);margin-bottom:.3rem}
+.j-detail{font-size:.85rem;color:var(--muted);line-height:1.7}
+.j-flag{font-size:1.2rem}
+
+/* Interests */
+.interests-wrap{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.5rem}
+.int-tag{background:rgba(0,201,177,.07);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.82rem;color:var(--teal);display:flex;align-items:center;gap:.4rem;transition:all .2s}
+.int-tag:hover{background:rgba(0,201,177,.15);border-color:var(--teal)}
+
+/* ─── EXPERIENCE ─── */
+.exp-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.8rem;margin-bottom:1.5rem;display:grid;
+  grid-template-columns:80px 1fr;gap:1.5rem;align-items:start;
+  transition:border-color .3s,transform .3s;
+}
+.exp-card:hover{border-color:var(--teal);transform:translateX(5px)}
+.exp-photo-wrap{
+  width:80px;height:80px;border-radius:8px;
+  background:var(--card2);border:1px dashed var(--border);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;cursor:pointer;flex-shrink:0;
+}
+.exp-photo-wrap img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:none}
+.exp-photo-wrap .ph-hint{font-size:.58rem;color:var(--muted);text-align:center;line-height:1.3}
+.exp-photo-wrap input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.exp-photo-wrap:hover{border-color:var(--teal)}
+.exp-right{}
+.exp-period{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal);letter-spacing:.1em;margin-bottom:.3rem}
+.exp-role{font-size:1rem;font-weight:600;color:var(--cream);margin-bottom:.2rem}
+.exp-org{font-size:.85rem;color:var(--gold);margin-bottom:.6rem}
+.exp-desc{font-size:.85rem;color:var(--muted);line-height:1.75}
+
+/* ─── PUBLICATIONS ─── */
+.pub-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin-bottom:1.2rem;border-left:3px solid transparent;transition:all .3s}
+.pub-card:hover{border-left-color:var(--teal);transform:translateX(5px)}
+.pub-badge{display:inline-block;font-size:.65rem;font-family:'JetBrains Mono',monospace;padding:.2rem .7rem;border-radius:3px;margin-bottom:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.b-published{background:rgba(0,201,177,.12);color:var(--teal)}
+.b-review{background:rgba(226,176,74,.12);color:var(--gold)}
+.b-submitted{background:rgba(107,127,146,.12);color:var(--muted)}
+.pub-title{font-size:.95rem;font-weight:600;color:var(--cream);margin-bottom:.5rem;line-height:1.5}
+.pub-authors{font-size:.8rem;color:var(--muted);margin-bottom:.3rem}
+.pub-journal{font-size:.8rem;color:var(--teal);font-style:italic}
+
+/* ─── PROJECTS ─── */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;transition:all .3s}
+.proj-card:hover{transform:translateY(-6px);border-color:var(--teal)}
+.proj-funder{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem}
+.proj-title{font-size:.9rem;font-weight:600;color:var(--cream);margin-bottom:.7rem;line-height:1.5}
+.proj-desc{font-size:.8rem;color:var(--muted);line-height:1.7}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.9rem}
+.ptag{font-size:.65rem;padding:.2rem .5rem;border:1px solid var(--border);border-radius:3px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+
+/* ─── SKILLS ─── */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.sg-title{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.skill-row{margin-bottom:1rem}
+.skill-name{font-size:.82rem;color:var(--text);margin-bottom:.4rem}
+.skill-bar{height:3px;background:rgba(255,255,255,.07);border-radius:2px}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--teal2),var(--teal));border-radius:2px;width:0;transition:width 1.2s ease}
+
+/* ─── EDUCATION ─── */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.edu-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;transition:border-color .3s}
+.edu-card:hover{border-color:var(--teal)}
+.edu-year{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal);margin-bottom:.4rem}
+.edu-degree{font-size:.95rem;font-weight:600;color:var(--cream);margin-bottom:.3rem;line-height:1.4}
+.edu-school{font-size:.82rem;color:var(--muted)}
+.edu-gpa{font-size:.75rem;color:var(--gold);margin-top:.4rem}
+.award-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border)}
+.aw-icon{font-size:1.4rem;margin-top:.1rem}
+.aw-body strong{display:block;font-size:.9rem;color:var(--cream)}
+.aw-body span{font-size:.8rem;color:var(--muted)}
+
+/* ─── GALLERY ─── */
+.gallery-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+.gallery-add-btn{background:rgba(0,201,177,.1);border:1px dashed var(--teal);color:var(--teal);padding:.6rem 1.4rem;border-radius:5px;font-family:'Outfit',sans-serif;font-size:.82rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.5rem;position:relative;overflow:hidden}
+.gallery-add-btn input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.gallery-add-btn:hover{background:rgba(0,201,177,.18)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.gallery-item{
+  aspect-ratio:1;border-radius:8px;overflow:hidden;
+  background:var(--card);border:1px solid var(--border);
+  position:relative;cursor:pointer;
+}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item .gi-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(7,17,28,.9));
+  padding:.8rem .6rem .5rem;font-size:.72rem;color:var(--cream);
+  transform:translateY(100%);transition:transform .3s;
+}
+.gallery-item:hover .gi-caption{transform:translateY(0)}
+.gallery-empty{
+  grid-column:1/-1;text-align:center;padding:4rem 2rem;
+  color:var(--muted);border:1px dashed var(--border);border-radius:var(--radius);
+}
+.gallery-empty p{margin-top:.5rem;font-size:.85rem}
+
+/* Gallery Lightbox */
+#lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;align-items:center;justify-content:center;flex-direction:column}
+#lightbox.open{display:flex}
+#lightbox img{max-width:90vw;max-height:80vh;border-radius:8px;object-fit:contain}
+#lightbox-caption{color:var(--muted);font-size:.85rem;margin-top:1rem}
+#lightbox-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:1px solid var(--muted);color:var(--muted);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.1rem;transition:all .2s}
+#lightbox-close:hover{color:var(--red);border-color:var(--red)}
+
+/* ─── WORKSHOPS/CONFERENCES ─── */
+.wc-filter{display:flex;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.wc-filter-btn{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:.4rem 1rem;border-radius:20px;font-size:.78rem;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif}
+.wc-filter-btn:hover,.wc-filter-btn.active{background:rgba(0,201,177,.1);border-color:var(--teal);color:var(--teal)}
+.wc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.wc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;transition:all .3s;position:relative}
+.wc-card:hover{border-color:var(--teal);transform:translateY(-4px)}
+.wc-type{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem}
+.wc-type.workshop{color:var(--teal)}
+.wc-type.conference{color:var(--gold)}
+.wc-type.training{color:#a78bfa}
+.wc-title{font-size:.95rem;font-weight:600;color:var(--cream);margin-bottom:.4rem;line-height:1.4}
+.wc-org{font-size:.82rem;color:var(--muted);margin-bottom:.3rem}
+.wc-date{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted)}
+.wc-cert{position:absolute;top:1rem;right:1rem;font-size:.68rem;background:rgba(0,201,177,.1);color:var(--teal);border:1px solid var(--border);padding:.15rem .5rem;border-radius:3px}
+
+/* Add WC Modal */
+.add-wc-btn{background:rgba(0,201,177,.08);border:1px dashed var(--teal);color:var(--teal);padding:.65rem 1.5rem;border-radius:5px;font-family:'Outfit',sans-serif;font-size:.82rem;cursor:pointer;margin-bottom:2rem;transition:all .2s;display:flex;align-items:center;gap:.5rem}
+.add-wc-btn:hover{background:rgba(0,201,177,.15)}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:400;align-items:center;justify-content:center}
+.modal-bg.open{display:flex}
+.modal-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;width:90%;max-width:500px;max-height:90vh;overflow-y:auto}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--cream);margin-bottom:1.5rem}
+.form-row{margin-bottom:1rem}
+.form-row label{display:block;font-size:.75rem;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-bottom:.4rem}
+.form-row input,.form-row select,.form-row textarea{width:100%;background:var(--card);border:1px solid var(--border);border-radius:5px;padding:.7rem 1rem;color:var(--text);font-family:'Outfit',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s;resize:vertical}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--teal)}
+.form-row select option{background:var(--card)}
+.modal-btns{display:flex;gap:.8rem;margin-top:1.5rem}
+.btn-cancel{background:transparent;border:1px solid var(--border);color:var(--muted);padding:.6rem 1.4rem;border-radius:5px;cursor:pointer;font-family:'Outfit',sans-serif;font-size:.82rem;transition:all .2s}
+.btn-cancel:hover{border-color:var(--muted);color:var(--cream)}
+
+/* ─── MY THOUGHTS (BLOG) ─── */
+.thoughts-layout{display:grid;grid-template-columns:1fr 300px;gap:2.5rem;align-items:start}
+.thought-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;margin-bottom:1.4rem;transition:all .3s;cursor:pointer}
+.thought-card:hover{border-color:var(--teal);transform:translateX(4px)}
+.thought-meta{display:flex;align-items:center;gap:1rem;margin-bottom:.8rem}
+.thought-date{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted)}
+.thought-cat{font-size:.68rem;background:rgba(0,201,177,.1);color:var(--teal);border:1px solid var(--border);padding:.15rem .5rem;border-radius:3px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.07em}
+.thought-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--cream);margin-bottom:.6rem;line-height:1.3}
+.thought-excerpt{font-size:.85rem;color:var(--muted);line-height:1.75}
+.thought-readmore{font-size:.78rem;color:var(--teal);margin-top:.8rem;display:inline-block}
+.thoughts-sidebar{}
+.sidebar-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;margin-bottom:1.2rem}
+.sidebar-title{font-size:.78rem;font-weight:600;color:var(--cream);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.add-thought-btn{background:rgba(0,201,177,.08);border:1px dashed var(--teal);color:var(--teal);padding:.65rem 1.5rem;border-radius:5px;font-family:'Outfit',sans-serif;font-size:.82rem;cursor:pointer;margin-bottom:2rem;width:100%;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.add-thought-btn:hover{background:rgba(0,201,177,.15)}
+
+/* Thought Expand Modal */
+#thought-modal .modal-box{max-width:700px}
+.thought-full-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--cream);margin-bottom:.5rem;line-height:1.2}
+.thought-full-body{font-size:.92rem;color:var(--text);line-height:1.9;margin-top:1.2rem;white-space:pre-wrap}
+
+/* ─── CONTACT ─── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.ci-item{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border)}
+.ci-icon{width:42px;height:42px;border-radius:50%;background:rgba(0,201,177,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:1rem;flex-shrink:0}
+.ci-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+.ci-val{font-size:.9rem;color:var(--text)}
+.ci-val a{color:var(--teal);text-decoration:none}
+.ci-val a:hover{text-decoration:underline}
+.cform{display:flex;flex-direction:column;gap:.9rem}
+
+/* ─── FOOTER ─── */
+footer{padding:1.5rem 4%;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+footer span{font-size:.75rem;color:var(--muted)}
+footer a{color:var(--teal);text-decoration:none;font-size:.75rem}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{opacity:0;transform:translateY(16px);transition:all .6s}
+.fade-in.vis{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .hero-wrap{grid-template-columns:1fr;gap:2rem}
+  .profile-card{max-width:340px;margin:0 auto}
+  .contact-grid,.thoughts-layout{grid-template-columns:1fr}
+  .proj-grid,.skills-grid,.wc-grid,.edu-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+}
+@media(max-width:580px){
+  .proj-grid,.skills-grid,.wc-grid,.edu-grid,.gallery-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .exp-card{grid-template-columns:60px 1fr;gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav id="topnav">
+  <div class="nav-brand" onclick="showPage('home')">
+    <div class="nav-avatar" title="Click to upload profile photo">
+      <img id="nav-avatar-img" src="" alt="Md. Sajan Bishwas"/>
+      <div class="avatar-placeholder" id="nav-av-placeholder">MSB</div>
+      <input type="file" accept="image/*" onchange="uploadNavAvatar(this)"/>
+    </div>
+    <div class="nav-name-block">
+      <div class="nav-name">Md. Sajan Bishwas</div>
+      <div class="nav-dept">PhD Student · Epidemiology &amp; Community Health</div>
+    </div>
+  </div>
+  <ul class="nav-links" id="main-nav">
+    <li><button onclick="showPage('home')" class="active" id="nav-home">Home</button></li>
+    <li><button onclick="showPage('about')" id="nav-about">About</button></li>
+    <li><button onclick="showPage('experience')" id="nav-experience">Experience</button></li>
+    <li><button onclick="showPage('research')" id="nav-research">Research</button></li>
+    <li><button onclick="showPage('gallery')" id="nav-gallery">Gallery</button></li>
+    <li><button onclick="showPage('workshops')" id="nav-workshops">Workshops</button></li>
+    <li><button onclick="showPage('thoughts')" id="nav-thoughts">My Thoughts</button></li>
+    <li><button onclick="showPage('contact')" id="nav-contact">Contact</button></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: HOME -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page active" id="pg-home">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-wrap">
+    <div class="hero-left">
+      <div class="hero-chip"><span></span> Available for Research Collaboration</div>
+      <h1 class="hero-name">Md. Sajan<br/><em>Bishwas</em></h1>
+      <div class="hero-role">PhD Student in Public Health Sciences</div>
+      <div class="hero-dept">
+        Department of Epidemiology and Community Health<br/>
+        University of North Carolina, Charlotte
+      </div>
+      <p class="hero-desc">
+        Turning rigorous data into evidence that reduces inequities and improves population health. 
+        Specializing in epidemiology, WASH, child homicide, and intimate partner violence — 
+        with 4+ years of field research experience across Bangladesh and the United States.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-prim" onclick="showPage('research')">📄 View Research</button>
+        <a href="#" class="btn-out" onclick="downloadCV(event)">⬇ Download CV</a>
+        <button class="btn-out" onclick="showPage('contact')">✉ Contact</button>
+      </div>
+      <div class="hero-links">
+        <a href="https://linkedin.com/in/md-sajan-bishwas-110761136" target="_blank" class="hero-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/md-sajan-bishwas-110761136
+        </a>
+        <a href="mailto:mbishwas@charlotte.edu" class="hero-link">✉ mbishwas@charlotte.edu</a>
+      </div>
+    </div>
+    <div>
+      <div class="profile-card">
+        <div class="profile-pic-wrap" id="profile-pic-wrap" title="Click to upload your photo">
+          <img id="profile-img" src="" alt="Md. Sajan Bishwas"/>
+          <div class="profile-pic-placeholder" id="profile-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M6 20c0-4 2.7-6 6-6s6 2 6 6"/></svg>
+            <span>Upload Photo</span>
+          </div>
+          <input type="file" accept="image/*" onchange="uploadProfilePic(this)"/>
+        </div>
+        <div class="profile-fullname">Md. Sajan Bishwas, MPH</div>
+        <div class="profile-role-tag">PhD Student · Public Health Sciences</div>
+        <div class="profile-dept-tag">Dept. of Epidemiology &amp; Community Health<br/>UNC Charlotte, NC 28262</div>
+        <div class="profile-stats">
+          <div class="pstat"><div class="pstat-n">4+</div><div class="pstat-l">Years Research</div></div>
+          <div class="pstat"><div class="pstat-n">4</div><div class="pstat-l">Publications</div></div>
+          <div class="pstat"><div class="pstat-n">3</div><div class="pstat-l">Evaluations</div></div>
+          <div class="pstat"><div class="pstat-n">6+</div><div class="pstat-l">Organizations</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: ABOUT -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="pg-about">
+  <div class="sec-wrap">
+    <div class="sec-tag">02 // About Me</div>
+    <h2 class="sec-title">Md. Sajan Bishwas</h2>
+    <div class="subtab-bar">
+      <button class="stab active" onclick="showSubtab('about','overview',this)">Overview</button>
+      <button class="stab" onclick="showSubtab('about','memo',this)">My Research Memo</button>
+      <button class="stab" onclick="showSubtab('about','journey',this)">My PhD Journey: BD → USA</button>
+    </div>
+
+    <!-- OVERVIEW -->
+    <div class="subtab-content active" id="about-overview">
+      <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:start">
+        <div class="fade-in">
+          <p style="color:var(--text);font-size:.93rem;line-height:1.85;margin-bottom:1.1rem">
+            I am <strong style="color:var(--cream)">Md. Sajan Bishwas</strong>, a PhD Student in Public Health Sciences at the University of North Carolina, Charlotte, in the Department of Epidemiology and Community Health. I hold an MPH from BRAC University's James P. Grant School of Public Health and a MSc and BSc in Public Health and Informatics from Jahangirnagar University, Bangladesh.
+          </p>
+          <p style="color:var(--text);font-size:.93rem;line-height:1.85;margin-bottom:1.1rem">
+            My doctoral research focuses on child homicide and intimate partner violence (IPV) using the National Violent Death Reporting System (NVDRS), examining socioeconomic and contextual determinants. I bring a mixed-methods lens — quantitative analysis in Stata and R alongside qualitative inquiry using NVivo and Dedoose.
+          </p>
+          <p style="color:var(--text);font-size:.93rem;line-height:1.85;margin-bottom:1.1rem">
+            Prior to my PhD, I served as Senior Project Officer at BRAC, leading WASH programming for Rohingya refugees on Bhasan Char Island. My trajectory has taken me from the slums of Dhaka to refugee camps in Cox's Bazar to the halls of UNC Charlotte — always with the same mission: evidence that protects vulnerable lives.
+          </p>
+          <div style="margin-top:1.5rem">
+            <p style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.8rem">Research Interests</p>
+            <div class="interests-wrap">
+              <div class="int-tag">🔬 Epidemiology</div>
+              <div class="int-tag">🚿 WASH</div>
+              <div class="int-tag">🏙️ Urban Health</div>
+              <div class="int-tag">👶 Child Health & Violence</div>
+              <div class="int-tag">💔 IPV Research</div>
+              <div class="int-tag">🌍 Global Health</div>
+              <div class="int-tag">📊 Biostatistics</div>
+              <div class="int-tag">🌱 Non-Communicable Diseases</div>
+              <div class="int-tag">♿ Disability & Health</div>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in">
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem;margin-bottom:1.2rem">
+            <p style="font-size:.72rem;color:var(--teal);font-family:'JetBrains Mono',monospace;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.8rem">Quick Facts</p>
+            <div style="font-size:.85rem;color:var(--muted);line-height:2">
+              🎓 <span style="color:var(--text)">PhD Student at UNC Charlotte</span><br/>
+              🏛️ <span style="color:var(--text)">Dept. Epidemiology & Community Health</span><br/>
+              🌍 <span style="color:var(--text)">Originally from Bangladesh</span><br/>
+              📍 <span style="color:var(--text)">Charlotte, NC 28262</span><br/>
+              📧 <span style="color:var(--text)">mbishwas@charlotte.edu</span><br/>
+              🔗 <a href="https://linkedin.com/in/md-sajan-bishwas-110761136" target="_blank" style="color:var(--teal)">LinkedIn Profile</a>
+            </div>
+          </div>
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem">
+            <p style="font-size:.72rem;color:var(--teal);font-family:'JetBrains Mono',monospace;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.8rem">Memberships</p>
+            <div style="font-size:.82rem;color:var(--muted);line-height:2">
+              • Public Health Association of Bangladesh<br/>
+              • Bangladesh Public Health Foundation<br/>
+              • Public Health Forum, Jahangirnagar University<br/>
+              • Health Awareness Union, Jahangirnagar University
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESEARCH MEMO -->
+    <div class="subtab-content" id="about-memo">
+      <div class="memo-card fade-in">
+        <div class="sec-tag" style="margin-bottom:.4rem">Current Doctoral Research</div>
+        <div class="memo-title">Child Homicide & Intimate Partner Violence in the United States</div>
+        <div class="memo-body">
+          <p style="margin-bottom:1rem">My PhD research at UNC Charlotte examines <strong style="color:var(--cream)">child homicide and intimate partner violence (IPV)</strong> as interconnected public health crises, using the <strong style="color:var(--cream)">National Violent Death Reporting System (NVDRS)</strong> — one of the most comprehensive surveillance datasets available in the United States.</p>
+          <p style="margin-bottom:1rem">The central focus is on understanding the <strong style="color:var(--cream)">socioeconomic and contextual determinants</strong> that shape risk: poverty, housing instability, neighborhood disadvantage, and access to services. I am particularly interested in how systemic inequities create conditions that elevate risk for the most vulnerable.</p>
+          <p>This research builds directly on my prior field experience with BRAC, where I oversaw child abuse reporting and child safeguarding communications for Rohingya refugees — a context that sharpened my understanding of how violence is embedded in broader structural conditions.</p>
+        </div>
+        <div style="margin-top:1.2rem">
+          <span class="memo-tag">NVDRS</span><span class="memo-tag">Child Homicide</span><span class="memo-tag">IPV</span><span class="memo-tag">Epidemiology</span><span class="memo-tag">Stata/R</span><span class="memo-tag">Socioeconomic Determinants</span>
+        </div>
+      </div>
+      <div class="memo-card fade-in">
+        <div class="sec-tag" style="margin-bottom:.4rem">Past Research: Respiratory Health</div>
+        <div class="memo-title">Children in Waste Management — Dhaka, Bangladesh</div>
+        <div class="memo-body">
+          <p style="margin-bottom:1rem">A cross-sectional observational study investigating factors associated with the <strong style="color:var(--cream)">respiratory health of children</strong> working in waste management activities in Dhaka. The study was conducted as part of my MPH thesis and built on my experience with solid waste worker health monitoring at BRAC.</p>
+          <p>This research is currently under review and available as a preprint at <a href="https://doi.org/10.21203/rs.3.rs-4420649/v1" target="_blank" style="color:var(--teal)">doi.org/10.21203/rs.3.rs-4420649/v1</a>.</p>
+        </div>
+        <div style="margin-top:1.2rem">
+          <span class="memo-tag">Respiratory Health</span><span class="memo-tag">Child Labor</span><span class="memo-tag">WASH</span><span class="memo-tag">Cross-Sectional Study</span><span class="memo-tag">Bangladesh</span>
+        </div>
+      </div>
+      <div class="memo-card fade-in">
+        <div class="sec-tag" style="margin-bottom:.4rem">Past Research: NCDs & Cooking Fuels</div>
+        <div class="memo-title">Cooking Fuels and Hypertension among Women in Bangladesh</div>
+        <div class="memo-body">
+          <p>Investigated the <strong style="color:var(--cream)">association between solid cooking fuels and hypertension</strong> among women of reproductive age in Bangladesh, using the nationally representative BDHS 2017–2018 dataset. This study contributes to the growing literature on household air pollution as a non-communicable disease risk factor in low-income settings.</p>
+        </div>
+        <div style="margin-top:1.2rem">
+          <span class="memo-tag">Hypertension</span><span class="memo-tag">Cooking Fuels</span><span class="memo-tag">NCDs</span><span class="memo-tag">BDHS 2017-2018</span><span class="memo-tag">Women's Health</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHD JOURNEY -->
+    <div class="subtab-content" id="about-journey">
+      <p style="color:var(--muted);font-size:.9rem;margin-bottom:2.5rem;max-width:650px">From a public health student in Dhaka to a doctoral researcher in Charlotte — the journey of <strong style="color:var(--cream)">Md. Sajan Bishwas</strong>, shaped by fieldwork, fellowships, and a deep commitment to health equity.</p>
+      <div class="journey-wrap">
+        <div class="journey-item fade-in">
+          <div class="journey-dot filled"></div>
+          <div class="j-year">🇧🇩 2013 – 2017</div>
+          <div class="j-event">BSc in Public Health & Informatics</div>
+          <div class="j-detail">Jahangirnagar University, Savar, Dhaka · CGPA 3.55/4. Earned a Merit Scholarship in the final year. Became active in Badhon (blood donation), Consumer Youth Society, and the Health Awareness Union. This is where the public health calling took root.</div>
+        </div>
+        <div class="journey-item fade-in">
+          <div class="journey-dot filled"></div>
+          <div class="j-year">🇧🇩 2017 – 2018</div>
+          <div class="j-event">MSc in Public Health & Informatics</div>
+          <div class="j-detail">Jahangirnagar University · CGPA 3.23/4. Deepened expertise in epidemiology, biostatistics, and health informatics. Joined the Public Health Association of Bangladesh and Bangladesh Public Health Foundation as an executive member.</div>
+        </div>
+        <div class="journey-item fade-in">
+          <div class="journey-dot"></div>
+          <div class="j-year">🇧🇩 2019 – 2020</div>
+          <div class="j-event">First Research Experience — icddr,b</div>
+          <div class="j-detail">Research Intern at the International Centre for Diarrhoeal Disease Research, Bangladesh. Worked on the Sanconnect project, exploring sewerage connectivity for low-income communities in Dhaka slums. First exposure to rigorous mixed-methods field research.</div>
+        </div>
+        <div class="journey-item fade-in">
+          <div class="journey-dot"></div>
+          <div class="j-year">🇧🇩 2020 – 2021</div>
+          <div class="j-event">COVID-19 Data Management — DGHS</div>
+          <div class="j-detail">Data Assistant at Bangladesh's Directorate General of Health Services, MIS Department. Maintained national COVID-19 surveillance data in DHIS2 and supported the Surokkha vaccination registration platform during the pandemic response.</div>
+        </div>
+        <div class="journey-item fade-in">
+          <div class="journey-dot"></div>
+          <div class="j-year">🇧🇩 2022 – 2023</div>
+          <div class="j-event">Research & Evaluation Work</div>
+          <div class="j-detail">Served as Research Associate, Officer, and Research & Knowledge Management Officer at AIRD and Disaster Management Watch. Led IRC, Action Aid, and UNHCR-funded evaluations in Cox's Bazar. Skills in Stata, R, KoboToolbox, FGD, and KII deepened significantly.</div>
+        </div>
+        <div class="journey-item fade-in">
+          <div class="journey-dot gold"></div>
+          <div class="j-year">🇧🇩 2023 – 2024</div>
+          <div class="j-event">🏅 MPH — Sir Fazle Hasan Abed Fellowship</div>
+          <div class="j-detail">Awarded the prestigious merit-based Sir Fazle Hasan Abed Fellowship to pursue an MPH at BRAC University's James P. Grant School of Public Health (Cohort 19). CGPA 3.47/4. Conducted thesis research on children's respiratory health in Dhaka's waste management sector.</div>
+        </div>
+        <div class="journey-item fade-in">
+          <div class="journey-dot"></div>
+          <div class="j-year">🇧🇩 March 2024 – July 2025</div>
+          <div class="j-event">Senior Project Officer — BRAC, Bhasan Char</div>
+          <div class="j-detail">Led WASH programming for Rohingya refugees on Bhasan Char Island — one of the world's most complex humanitarian settings. Managed MIS, dashboards, KAP campaigns, donor reporting, and child safeguarding. This role became the bridge between field practice and academia.</div>
+        </div>
+        <div class="journey-item fade-in">
+          <div class="journey-dot gold"></div>
+          <div class="j-year">🇺🇸 2025 – Present</div>
+          <div class="j-event">🎓 PhD in Public Health Sciences — UNC Charlotte</div>
+          <div class="j-detail">Joined the Department of Epidemiology and Community Health at the University of North Carolina, Charlotte as a PhD Student. Current research focuses on child homicide and IPV using NVDRS data, supervised by Dr. Rajib Paul. The journey from Bangladesh to Charlotte — from Dhaka's slums to Charlotte's labs — continues.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: EXPERIENCE -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="pg-experience">
+  <div class="sec-wrap">
+    <div class="sec-tag">03 // Career</div>
+    <h2 class="sec-title">Professional Experience</h2>
+    <p style="color:var(--muted);font-size:.85rem;margin-bottom:2rem">📷 Click the photo box on each role to upload an organization logo or workplace photo.</p>
+
+    <div class="exp-card fade-in">
+      <div class="exp-photo-wrap">
+        <img id="exp-img-0"/>
+        <div class="ph-hint">📷<br/>Upload<br/>Photo</div>
+        <input type="file" accept="image/*" onchange="uploadExpPhoto(this,0)"/>
+      </div>
+      <div class="exp-right">
+        <div class="exp-period">Mar 2024 – Jul 2025</div>
+        <div class="exp-role">Senior Project Officer – WASH</div>
+        <div class="exp-org">BRAC · Bhasan Char, Noakhali, Bangladesh</div>
+        <div class="exp-desc">Led M&E frameworks and MIS strategies for a WASH project serving Rohingya refugees. Managed KAP assessments, donor reporting, water quality and solid waste dashboards, and child safeguarding communications for Persons with Disabilities on Bhasan Char Island.</div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div class="exp-photo-wrap">
+        <img id="exp-img-1"/>
+        <div class="ph-hint">📷<br/>Upload<br/>Photo</div>
+        <input type="file" accept="image/*" onchange="uploadExpPhoto(this,1)"/>
+      </div>
+      <div class="exp-right">
+        <div class="exp-period">May 2023 – Mar 2024</div>
+        <div class="exp-role">Research & Knowledge Management Officer</div>
+        <div class="exp-org">Associates for Innovative Research and Development · Dhaka, Bangladesh</div>
+        <div class="exp-desc">Designed qualitative and quantitative data collection systems using KoboCollect. Conducted FGDs and KIIs, supervised field staff, analyzed data in SPSS/Stata, and disseminated findings to clients and stakeholders including UNHCR and Action Aid.</div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div class="exp-photo-wrap">
+        <img id="exp-img-2"/>
+        <div class="ph-hint">📷<br/>Upload<br/>Photo</div>
+        <input type="file" accept="image/*" onchange="uploadExpPhoto(this,2)"/>
+      </div>
+      <div class="exp-right">
+        <div class="exp-period">Oct 2022 – Jan 2023</div>
+        <div class="exp-role">Officer – Evaluation Research</div>
+        <div class="exp-org">Disaster Management Watch Limited · Dhaka, Bangladesh</div>
+        <div class="exp-desc">Managed evaluation research activities, budget planning, and work plan implementation. Monitored data collection quality and authored comprehensive donor reports using SPSS and Stata.</div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div class="exp-photo-wrap">
+        <img id="exp-img-3"/>
+        <div class="ph-hint">📷<br/>Upload<br/>Photo</div>
+        <input type="file" accept="image/*" onchange="uploadExpPhoto(this,3)"/>
+      </div>
+      <div class="exp-right">
+        <div class="exp-period">Apr 2022 – Sep 2022</div>
+        <div class="exp-role">Research Associate</div>
+        <div class="exp-org">Associates for Innovative Research and Development · Dhaka, Bangladesh</div>
+        <div class="exp-desc">Supervised field data collection, designed questionnaires, conducted KII and FGD interviews, and performed data analysis in SPSS and Stata with regular field visits to monitor data quality.</div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div class="exp-photo-wrap">
+        <img id="exp-img-4"/>
+        <div class="ph-hint">📷<br/>Upload<br/>Photo</div>
+        <input type="file" accept="image/*" onchange="uploadExpPhoto(this,4)"/>
+      </div>
+      <div class="exp-right">
+        <div class="exp-period">Jun 2020 – Jun 2021</div>
+        <div class="exp-role">Data Assistant – MIS Department</div>
+        <div class="exp-org">Directorate General of Health Services, Bangladesh · Dhaka</div>
+        <div class="exp-desc">Maintained COVID-19 case records in DHIS2, supported vaccination registration via the Surokkha app, and coordinated with diagnostic centers to ensure timely and high-quality national health data.</div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-in">
+      <div class="exp-photo-wrap">
+        <img id="exp-img-5"/>
+        <div class="ph-hint">📷<br/>Upload<br/>Photo</div>
+        <input type="file" accept="image/*" onchange="uploadExpPhoto(this,5)"/>
+      </div>
+      <div class="exp-right">
+        <div class="exp-period">Nov 2019 – Mar 2020</div>
+        <div class="exp-role">Research Intern</div>
+        <div class="exp-org">International Centre for Diarrhoeal Disease Research (icddr,b) · Dhaka</div>
+        <div class="exp-desc">Contributed to the Sanconnect feasibility project on sewerage network access for low-income Dhaka communities. Developed FGD/KII tools, collected quantitative data via KoboToolbox, and analyzed results in SPSS/Stata.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: RESEARCH -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="pg-research">
+  <div class="sec-wrap">
+    <div class="sec-tag">04 // Scholarship</div>
+    <h2 class="sec-title">Research & Publications</h2>
+
+    <!-- PhD Research Box -->
+    <div style="background:var(--card);border:1px solid var(--teal);border-radius:var(--radius);padding:1.8rem;margin-bottom:2.5rem" class="fade-in">
+      <div class="sec-tag" style="margin-bottom:.4rem">Current PhD Research · UNC Charlotte</div>
+      <div style="font-size:1.05rem;font-weight:600;color:var(--cream);margin-bottom:.5rem">Child Homicide & Intimate Partner Violence — NVDRS Analysis</div>
+      <div style="font-size:.88rem;color:var(--muted)"><strong style="color:var(--text)">Md. Sajan Bishwas</strong> · Department of Epidemiology and Community Health · Supervised by Dr. Rajib Paul · 2025–present</div>
+      <div style="font-size:.85rem;color:var(--text);margin-top:.8rem;line-height:1.8">Examining socioeconomic and contextual determinants of child homicide and IPV using the National Violent Death Reporting System (NVDRS). Focus areas include poverty, neighborhood disadvantage, and structural risk factors.</div>
+    </div>
+
+    <div class="pub-list">
+      <div class="pub-card fade-in">
+        <span class="pub-badge b-review">Under Review</span>
+        <div class="pub-title">Assessing the Factors Associated with the Respiratory Health of Children Working in Waste Management Activities: A Cross-Sectional Observational Study in Dhaka, Bangladesh</div>
+        <div class="pub-authors">Bishwas, M. S., Sehrin, F., Bayazid, A. R., Sara, H. H., & Quayyum, Z. (2024)</div>
+        <div class="pub-journal">Preprint · <a href="https://doi.org/10.21203/rs.3.rs-4420649/v1" target="_blank" style="color:var(--teal)">doi.org/10.21203/rs.3.rs-4420649/v1</a></div>
+      </div>
+      <div class="pub-card fade-in">
+        <span class="pub-badge b-submitted">Submitted</span>
+        <div class="pub-title">Association between Cooking Fuels and Hypertension among Women at Reproductive Age in Bangladesh: A Nationally Representative Population Dataset from the BDHS 2017–2018</div>
+        <div class="pub-authors">Bishwas, M. S., Alin, S. I., Ashor, M., Paul, S., & Chowdhury, D. (2024)</div>
+        <div class="pub-journal">Bangladesh Demographic and Health Survey (BDHS 2017–2018)</div>
+      </div>
+      <div class="pub-card fade-in">
+        <span class="pub-badge b-published">Published</span>
+        <div class="pub-title">Physical Inactivity and Sedentary Behaviors in the Bangladeshi Population during the COVID-19 Pandemic: An Online Cross-Sectional Survey</div>
+        <div class="pub-authors">Rahman, M. E., Islam, M. S., Bishwas, M. S., Moonajilin, M. S., & Gozal, D. (2020)</div>
+        <div class="pub-journal">Heliyon, 6(10) · 2020</div>
+      </div>
+      <div class="pub-card fade-in">
+        <span class="pub-badge b-published">Published</span>
+        <div class="pub-title">Awareness, Knowledge about Human Papillomavirus and Attitude towards Its Vaccine among University Students: A Bangladeshi Pilot Study</div>
+        <div class="pub-authors">Rahman, M. E., Moonajilin, M. S., Bishwas, M. S., Banik, R., Pinky, G. N., & Alin, S. I. (2019)</div>
+        <div class="pub-journal">Asian Journal of Health Sciences, 5(2) · 2019</div>
+      </div>
+    </div>
+
+    <div style="margin-top:3.5rem">
+      <div class="sec-tag">Evaluation Projects</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--cream);margin-bottom:1.8rem">Field Research</h3>
+      <div class="proj-grid">
+        <div class="proj-card fade-in">
+          <div class="proj-funder">UNHCR / Mukti · Dec 2023</div>
+          <div class="proj-title">Impact Evaluation: Peaceful Coexistence & Self-Reliance for Refugees and Host Community</div>
+          <div class="proj-desc">Designed KoboToolbox instruments, trained enumerators, monitored field activities, and analyzed data in Stata and R for a UNHCR-funded refugee program in Cox's Bazar.</div>
+          <div class="proj-tags"><span class="ptag">Stata</span><span class="ptag">R</span><span class="ptag">KoboToolbox</span><span class="ptag">Refugees</span></div>
+        </div>
+        <div class="proj-card fade-in">
+          <div class="proj-funder">Action Aid · Apr–Aug 2023</div>
+          <div class="proj-title">Rural-Urban Climate Change-Induced Migration Study</div>
+          <div class="proj-desc">Led quantitative data analysis of climate-induced migration dynamics in rural Bangladesh. Literature review, data design, and dissemination to Action Aid.</div>
+          <div class="proj-tags"><span class="ptag">Stata</span><span class="ptag">R</span><span class="ptag">Climate</span><span class="ptag">Migration</span></div>
+        </div>
+        <div class="proj-card fade-in">
+          <div class="proj-funder">IRC · Jul–Aug 2022</div>
+          <div class="proj-title">COVID-19 WASH & Health Emergency Evaluation — Cox's Bazar</div>
+          <div class="proj-desc">Evaluated emergency WASH, health, and protection services. Conducted FGDs, KIIs, micro-narratives, and data analysis in SPSS for underserved communities.</div>
+          <div class="proj-tags"><span class="ptag">SPSS</span><span class="ptag">WASH</span><span class="ptag">FGD/KII</span><span class="ptag">COVID-19</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills inline -->
+    <div style="margin-top:3.5rem">
+      <div class="sec-tag">Skills & Tools</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--cream);margin-bottom:1.8rem">Technical Expertise</h3>
+      <div class="skills-grid">
+        <div class="fade-in">
+          <div class="sg-title">Statistical Analysis</div>
+          <div class="skill-row"><div class="skill-name">Stata</div><div class="skill-bar"><div class="skill-fill" data-w="95"></div></div></div>
+          <div class="skill-row"><div class="skill-name">R</div><div class="skill-bar"><div class="skill-fill" data-w="85"></div></div></div>
+          <div class="skill-row"><div class="skill-name">SPSS</div><div class="skill-bar"><div class="skill-fill" data-w="90"></div></div></div>
+        </div>
+        <div class="fade-in">
+          <div class="sg-title">Data Collection & Viz</div>
+          <div class="skill-row"><div class="skill-name">KoboToolbox / DHIS2</div><div class="skill-bar"><div class="skill-fill" data-w="92"></div></div></div>
+          <div class="skill-row"><div class="skill-name">Tableau</div><div class="skill-bar"><div class="skill-fill" data-w="80"></div></div></div>
+          <div class="skill-row"><div class="skill-name">LaTeX</div><div class="skill-bar"><div class="skill-fill" data-w="70"></div></div></div>
+        </div>
+        <div class="fade-in">
+          <div class="sg-title">Qualitative & GIS</div>
+          <div class="skill-row"><div class="skill-name">NVivo</div><div class="skill-bar"><div class="skill-fill" data-w="78"></div></div></div>
+          <div class="skill-row"><div class="skill-name">Dedoose</div><div class="skill-bar"><div class="skill-fill" data-w="75"></div></div></div>
+          <div class="skill-row"><div class="skill-name">QGIS / ArcGIS</div><div class="skill-bar"><div class="skill-fill" data-w="70"></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div style="margin-top:3.5rem">
+      <div class="sec-tag">Academic Background</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--cream);margin-bottom:1.8rem">Education & Awards</h3>
+      <div class="edu-grid">
+        <div class="edu-card fade-in"><div class="edu-year">2025–2030</div><div class="edu-degree">PhD in Public Health Sciences</div><div class="edu-school">University of North Carolina, Charlotte · USA<br/>Dept. of Epidemiology and Community Health</div></div>
+        <div class="edu-card fade-in"><div class="edu-year">2023–2024</div><div class="edu-degree">Master of Public Health (MPH)</div><div class="edu-school">BRAC University – James P. Grant School of Public Health, Bangladesh</div><div class="edu-gpa">CGPA: 3.47 / 4.0</div></div>
+        <div class="edu-card fade-in"><div class="edu-year">2017–2018</div><div class="edu-degree">MSc in Public Health & Informatics</div><div class="edu-school">Jahangirnagar University, Bangladesh</div><div class="edu-gpa">CGPA: 3.23 / 4.0</div></div>
+        <div class="edu-card fade-in"><div class="edu-year">2013–2017</div><div class="edu-degree">BSc in Public Health & Informatics</div><div class="edu-school">Jahangirnagar University, Bangladesh</div><div class="edu-gpa">CGPA: 3.55 / 4.0</div></div>
+      </div>
+      <div style="margin-top:2rem" class="fade-in">
+        <div class="award-item"><div class="aw-icon">🏅</div><div class="aw-body"><strong>Sir Fazle Hasan Abed Fellowship (Merit-Based)</strong><span>MPH at BRAC JPG School of Public Health, Cohort-19 · 2023</span></div></div>
+        <div class="award-item"><div class="aw-icon">🏅</div><div class="aw-body"><strong>Merit Scholarship – Bachelor's Degree Final Year</strong><span>Jahangirnagar University · 2019</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: GALLERY -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="pg-gallery">
+  <div class="sec-wrap">
+    <div class="sec-tag">05 // Visuals</div>
+    <h2 class="sec-title">Gallery</h2>
+    <div class="gallery-toolbar">
+      <p style="color:var(--muted);font-size:.85rem">Upload photos from fieldwork, events, research, or personal milestones.</p>
+      <label class="gallery-add-btn">
+        📷 Add Photos
+        <input type="file" accept="image/*" multiple onchange="addGalleryPhotos(this)"/>
+      </label>
+    </div>
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="gallery-empty" id="gallery-empty">
+        <div style="font-size:2.5rem;margin-bottom:.5rem">🖼️</div>
+        <p>Your gallery is empty. Click <strong style="color:var(--teal)">Add Photos</strong> to get started!</p>
+        <p style="margin-top:.3rem;font-size:.78rem">You can upload multiple photos at once.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt=""/>
+  <div id="lightbox-caption"></div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: WORKSHOPS / CONFERENCES -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="pg-workshops">
+  <div class="sec-wrap">
+    <div class="sec-tag">06 // Events</div>
+    <h2 class="sec-title">Workshops & Conferences</h2>
+    <button class="add-wc-btn" onclick="openWCModal()">➕ Add Workshop / Conference / Training</button>
+    <div class="wc-filter" id="wc-filter">
+      <button class="wc-filter-btn active" onclick="filterWC('all',this)">All</button>
+      <button class="wc-filter-btn" onclick="filterWC('conference',this)">Conferences</button>
+      <button class="wc-filter-btn" onclick="filterWC('workshop',this)">Workshops</button>
+      <button class="wc-filter-btn" onclick="filterWC('training',this)">Trainings</button>
+    </div>
+    <div class="wc-grid" id="wc-grid">
+      <!-- Seeded entries -->
+      <div class="wc-card" data-type="training">
+        <span class="wc-cert">✓ Certificate</span>
+        <div class="wc-type training">Training</div>
+        <div class="wc-title">CITI Program — Social/Behavioral Research (Human Subjects, Ethics & Compliance)</div>
+        <div class="wc-org">CITI Program</div>
+        <div class="wc-date">September 11, 2025</div>
+      </div>
+      <div class="wc-card" data-type="training">
+        <span class="wc-cert">✓ Certificate</span>
+        <div class="wc-type training">Training</div>
+        <div class="wc-title">Data Management and Analysis in STATA</div>
+        <div class="wc-org">Global Public Health Research Foundation</div>
+        <div class="wc-date">2020</div>
+      </div>
+      <div class="wc-card" data-type="training">
+        <span class="wc-cert">✓ Certificate</span>
+        <div class="wc-type training">Training</div>
+        <div class="wc-title">Statistical Package for Social Science (SPSS)</div>
+        <div class="wc-org">Department of Statistics, Jahangirnagar University</div>
+        <div class="wc-date">2019</div>
+      </div>
+      <div class="wc-card" data-type="training">
+        <span class="wc-cert">✓ Certificate</span>
+        <div class="wc-type training">Training</div>
+        <div class="wc-title">Epidemiology in Public Health Practice Specialization</div>
+        <div class="wc-org">Coursera / Johns Hopkins University</div>
+        <div class="wc-date">2020</div>
+      </div>
+      <div class="wc-card" data-type="training">
+        <span class="wc-cert">✓ Certificate</span>
+        <div class="wc-type training">Training</div>
+        <div class="wc-title">Biostatistics in Public Health Specialization</div>
+        <div class="wc-org">Coursera / Johns Hopkins University</div>
+        <div class="wc-date">2020</div>
+      </div>
+      <div class="wc-card" data-type="training">
+        <span class="wc-cert">✓ Certificate</span>
+        <div class="wc-type training">Training</div>
+        <div class="wc-title">Protecting Public Health in a Changing Climate: A Primer for City, Local & Regional Action</div>
+        <div class="wc-org">Coursera / Johns Hopkins University</div>
+        <div class="wc-date">2020</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WC Modal -->
+<div class="modal-bg" id="wc-modal">
+  <div class="modal-box">
+    <div class="modal-title">Add Event</div>
+    <div class="form-row"><label>Type</label><select id="wc-type-input"><option value="conference">Conference</option><option value="workshop">Workshop</option><option value="training">Training</option></select></div>
+    <div class="form-row"><label>Title</label><input type="text" id="wc-title-input" placeholder="Event title"/></div>
+    <div class="form-row"><label>Organization / Organizer</label><input type="text" id="wc-org-input" placeholder="e.g. Johns Hopkins, UNC Charlotte"/></div>
+    <div class="form-row"><label>Date</label><input type="text" id="wc-date-input" placeholder="e.g. March 2024"/></div>
+    <div class="form-row"><label>Notes (optional)</label><textarea id="wc-notes-input" rows="2" placeholder="Brief description…"></textarea></div>
+    <div class="form-row" style="display:flex;align-items:center;gap:.6rem"><input type="checkbox" id="wc-cert-input" style="width:auto;padding:0;cursor:pointer"/><label style="text-transform:none;letter-spacing:0;font-size:.85rem;cursor:pointer" for="wc-cert-input">I have a certificate for this</label></div>
+    <div class="modal-btns">
+      <button class="btn-prim" onclick="addWCItem()">Add</button>
+      <button class="btn-cancel" onclick="closeWCModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: MY THOUGHTS -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="pg-thoughts">
+  <div class="sec-wrap">
+    <div class="sec-tag">07 // Reflections</div>
+    <h2 class="sec-title">My Thoughts</h2>
+    <div class="thoughts-layout">
+      <div>
+        <button class="add-thought-btn" onclick="openThoughtModal()">✍️ Write a New Post</button>
+        <div id="thoughts-list">
+          <!-- Seeded posts -->
+          <div class="thought-card" onclick="expandThought('Why I Study Violence as a Public Health Issue','Reflections','March 2026',`When people hear I study child homicide, they often pause. "That's so dark," they say. But I see it differently.\n\nViolence is not inevitable — it is patterned. It clusters in neighborhoods where poverty is entrenched, where housing is unstable, where systems have failed for generations. Understanding those patterns is exactly what epidemiology is for.\n\nAs a public health researcher, I believe our job is to go where the burden is greatest — and for too many families in the United States, violence is that burden. My work with NVDRS data is not just about counting deaths. It is about understanding the conditions that make them more likely, so we can change those conditions.\n\nI carry this mission from my years working with Rohingya refugees on Bhasan Char Island, where child safeguarding was part of my daily work. The specifics are different — displacement versus domestic violence, Cox's Bazar versus Charlotte — but the underlying question is the same: what protects children from harm?`)">
+            <div class="thought-meta"><span class="thought-date">March 2026</span><span class="thought-cat">Reflections</span></div>
+            <div class="thought-title">Why I Study Violence as a Public Health Issue</div>
+            <div class="thought-excerpt">When people hear I study child homicide, they often pause. "That's so dark," they say. But I see it differently. Violence is not inevitable — it is patterned...</div>
+            <span class="thought-readmore">Read more →</span>
+          </div>
+          <div class="thought-card" onclick="expandThought('From Bhasan Char to Charlotte — What Fieldwork Taught Me','Field Notes','February 2026',`Bhasan Char is a silt island in the Bay of Bengal, barely visible on most maps, home to tens of thousands of Rohingya refugees. Charlotte, North Carolina is a sprawling American city with a world-class university. On the surface, they have nothing in common.\n\nBut fieldwork taught me that the fundamentals of public health are the same everywhere.\n\nWater quality data is meaningless if the people generating it do not trust the system that collects it. KAP assessments are only as good as the relationships you build with the communities you are trying to understand. Dashboards do not change behavior — people do.\n\nI carry these lessons into my PhD. When I sit with NVDRS data in Charlotte, I think about the Rohingya mothers on Bhasan Char who told me about their children. Data and humanity are not opposites. The best epidemiologists hold both at once.`)">
+            <div class="thought-meta"><span class="thought-date">February 2026</span><span class="thought-cat">Field Notes</span></div>
+            <div class="thought-title">From Bhasan Char to Charlotte — What Fieldwork Taught Me</div>
+            <div class="thought-excerpt">Bhasan Char is a silt island in the Bay of Bengal, barely visible on most maps. Charlotte is a sprawling American city. On the surface, they have nothing in common...</div>
+            <span class="thought-readmore">Read more →</span>
+          </div>
+          <div class="thought-card" onclick="expandThought('The Sir Fazle Hasan Abed Fellowship Changed My Life','Academic Journey','January 2026',`I was sitting in a small room in Dhaka when I found out I had been awarded the Sir Fazle Hasan Abed Fellowship.\n\nSir Fazle Hasan Abed founded BRAC — one of the largest and most effective NGOs in the world — and built it from a relief operation after the 1971 Liberation War into a global institution that has lifted millions out of poverty. To have a fellowship named after him, awarded on merit, was something I had not allowed myself to fully hope for.\n\nThe MPH at BRAC's James P. Grant School of Public Health opened doors I could not have opened alone. It gave me the academic foundation, the network, and — perhaps most importantly — the confidence to believe that I belonged in global public health discourse.\n\nI wrote my thesis on children's respiratory health in Dhaka's waste sector. I defended it while simultaneously managing WASH programs on Bhasan Char. It was the hardest and most rewarding year of my academic life.\n\nNow I am in Charlotte. And I carry Sir Fazle's legacy with me — the belief that evidence, when combined with commitment, can change the lives of the most vulnerable.`)">
+            <div class="thought-meta"><span class="thought-date">January 2026</span><span class="thought-cat">Academic Journey</span></div>
+            <div class="thought-title">The Sir Fazle Hasan Abed Fellowship Changed My Life</div>
+            <div class="thought-excerpt">I was sitting in a small room in Dhaka when I found out I had been awarded the Sir Fazle Hasan Abed Fellowship. I had not allowed myself to fully hope for it...</div>
+            <span class="thought-readmore">Read more →</span>
+          </div>
+        </div>
+      </div>
+      <div class="thoughts-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-title">About These Posts</div>
+          <p style="font-size:.82rem;color:var(--muted);line-height:1.75">Personal reflections on research, fieldwork, public health, and the journey from Bangladesh to UNC Charlotte by <strong style="color:var(--cream)">Md. Sajan Bishwas</strong>.</p>
+        </div>
+        <div class="sidebar-card">
+          <div class="sidebar-title">Categories</div>
+          <div style="display:flex;flex-direction:column;gap:.4rem;font-size:.82rem">
+            <span style="color:var(--teal)">📝 Reflections</span>
+            <span style="color:var(--teal)">🌍 Field Notes</span>
+            <span style="color:var(--teal)">🎓 Academic Journey</span>
+            <span style="color:var(--teal)">🔬 Research Insights</span>
+            <span style="color:var(--teal)">🏙️ Life in Charlotte</span>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <div class="sidebar-title">Connect</div>
+          <p style="font-size:.82rem;color:var(--muted);margin-bottom:.7rem">Have a thought to share? Reach out:</p>
+          <a href="mailto:mbishwas@charlotte.edu" style="color:var(--teal);font-size:.82rem">mbishwas@charlotte.edu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Thought Modal (Add + Expand) -->
+<div class="modal-bg" id="thought-modal">
+  <div class="modal-box" style="max-width:680px">
+    <div class="modal-title" id="thought-modal-title">Write a New Post</div>
+    <div id="thought-write-form">
+      <div class="form-row"><label>Title</label><input type="text" id="th-title-input" placeholder="Your post title"/></div>
+      <div class="form-row"><label>Category</label><select id="th-cat-input"><option>Reflections</option><option>Field Notes</option><option>Academic Journey</option><option>Research Insights</option><option>Life in Charlotte</option></select></div>
+      <div class="form-row"><label>Body</label><textarea id="th-body-input" rows="8" placeholder="Write your thoughts here…"></textarea></div>
+      <div class="modal-btns"><button class="btn-prim" onclick="submitThought()">Publish</button><button class="btn-cancel" onclick="closeThoughtModal()">Cancel</button></div>
+    </div>
+    <div id="thought-read-view" style="display:none">
+      <div class="thought-full-title" id="th-read-title"></div>
+      <div style="display:flex;gap:.8rem;margin:.6rem 0 1rem"><span class="thought-date" id="th-read-date" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted)"></span><span class="thought-cat" id="th-read-cat"></span></div>
+      <div class="thought-full-body" id="th-read-body"></div>
+      <div class="modal-btns" style="margin-top:1.5rem"><button class="btn-cancel" onclick="closeThoughtModal()">Close</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PAGE: CONTACT -->
+<!-- ══════════════════════════════════════════ -->
+<div class="page" id="pg-contact">
+  <div class="sec-wrap">
+    <div class="sec-tag">08 // Connect</div>
+    <h2 class="sec-title">Get in Touch</h2>
+    <div class="contact-grid">
+      <div class="fade-in">
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:2rem">Md. Sajan Bishwas welcomes research collaborations, academic discussions, and professional opportunities.</p>
+        <div class="ci-item"><div class="ci-icon">✉</div><div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:mbishwas@charlotte.edu">mbishwas@charlotte.edu</a></div></div></div>
+        <div class="ci-item"><div class="ci-icon">📞</div><div><div class="ci-label">Phone</div><div class="ci-val">980-395-1425</div></div></div>
+        <div class="ci-item"><div class="ci-icon">📍</div><div><div class="ci-label">Address</div><div class="ci-val">11000 Diploma Drive, Charlotte, NC 28262</div></div></div>
+        <div class="ci-item"><div class="ci-icon">🎓</div><div><div class="ci-label">Institution</div><div class="ci-val">Dept. of Epidemiology & Community Health<br/>UNC Charlotte</div></div></div>
+        <div class="ci-item"><div class="ci-icon">🔗</div><div><div class="ci-label">LinkedIn</div><div class="ci-val"><a href="https://linkedin.com/in/md-sajan-bishwas-110761136" target="_blank">linkedin.com/in/md-sajan-bishwas-110761136</a></div></div></div>
+        <div style="margin-top:1.5rem">
+          <a href="#" onclick="downloadCV(event)" class="btn-prim" style="display:inline-flex">⬇ Download CV</a>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="cform">
+          <div class="form-row"><label>Name</label><input type="text" placeholder="Your full name"/></div>
+          <div class="form-row"><label>Email</label><input type="email" placeholder="your@email.com"/></div>
+          <div class="form-row"><label>Subject</label><input type="text" placeholder="Research collaboration, etc."/></div>
+          <div class="form-row"><label>Message</label><textarea rows="5" placeholder="Your message to Md. Sajan Bishwas…"></textarea></div>
+          <button class="btn-prim" onclick="alert('To activate this form, replace this button with a Formspree form — visit formspree.io for a free setup.')">Send Message</button>
+          <p style="font-size:.73rem;color:var(--muted);margin-top:.3rem">💡 Activate via <a href="https://formspree.io" target="_blank" style="color:var(--teal)">Formspree.io</a> (free, 2 min setup)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Md. Sajan Bishwas, MPH · PhD Student, UNC Charlotte</span>
+  <div style="display:flex;gap:1.2rem">
+    <a href="mailto:mbishwas@charlotte.edu">Email</a>
+    <a href="https://linkedin.com/in/md-sajan-bishwas-110761136" target="_blank">LinkedIn</a>
+    <a href="#" onclick="downloadCV(event)">Download CV</a>
+  </div>
+</footer>
+
+<script>
+// ─── PAGE ROUTING ───
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('pg-' + id).classList.add('active');
+  document.querySelectorAll('#main-nav button').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('nav-' + id);
+  if (btn) btn.classList.add('active');
+  window.scrollTo(0, 0);
+  setTimeout(triggerAnimations, 100);
+}
+
+// ─── SUBTABS ───
+function showSubtab(page, tab, el) {
+  const prefix = page + '-';
+  document.querySelectorAll('[id^="' + prefix + '"]').forEach(t => t.classList.remove('active'));
+  document.getElementById(prefix + tab).classList.add('active');
+  el.closest('.subtab-bar').querySelectorAll('.stab').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  setTimeout(triggerAnimations, 50);
+}
+
+// ─── SCROLL ANIMATIONS ───
+function triggerAnimations() {
+  const els = document.querySelectorAll('.page.active .fade-in');
+  els.forEach((el, i) => {
+    setTimeout(() => {
+      el.classList.add('vis');
+      el.querySelectorAll('.skill-fill').forEach(b => { b.style.width = (b.dataset.w || 0) + '%'; });
+    }, i * 80);
+  });
+  document.querySelectorAll('.page.active .skill-fill').forEach(b => {
+    setTimeout(() => b.style.width = (b.dataset.w || 0) + '%', 300);
+  });
+}
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      e.target.querySelectorAll('.skill-fill').forEach(b => { b.style.width = (b.dataset.w || 0) + '%'; });
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+setTimeout(triggerAnimations, 200);
+
+// ─── PHOTO UPLOAD: PROFILE ───
+function uploadProfilePic(input) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = document.getElementById('profile-img');
+    img.src = e.target.result; img.style.display = 'block';
+    document.getElementById('profile-placeholder').style.display = 'none';
+    // also update nav avatar
+    const navImg = document.getElementById('nav-avatar-img');
+    navImg.src = e.target.result; navImg.style.display = 'block';
+    document.getElementById('nav-av-placeholder').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function uploadNavAvatar(input) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const navImg = document.getElementById('nav-avatar-img');
+    navImg.src = e.target.result; navImg.style.display = 'block';
+    document.getElementById('nav-av-placeholder').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+// ─── PHOTO UPLOAD: EXPERIENCE ───
+function uploadExpPhoto(input, idx) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = document.getElementById('exp-img-' + idx);
+    img.src = e.target.result; img.style.display = 'block';
+    img.closest('.exp-photo-wrap').querySelector('.ph-hint').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+// ─── GALLERY ───
+let galleryPhotos = [];
+function addGalleryPhotos(input) {
+  const files = Array.from(input.files);
+  const grid = document.getElementById('gallery-grid');
+  const empty = document.getElementById('gallery-empty');
+  if (empty) empty.style.display = 'none';
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const idx = galleryPhotos.length;
+      galleryPhotos.push({ src: e.target.result, name: file.name });
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+      item.innerHTML = `<img src="${e.target.result}" alt="${file.name}" onclick="openLightbox(${idx})"/>
+        <div class="gi-caption">${file.name}</div>`;
+      grid.appendChild(item);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+function openLightbox(idx) {
+  const p = galleryPhotos[idx];
+  document.getElementById('lightbox-img').src = p.src;
+  document.getElementById('lightbox-caption').textContent = p.name;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+document.getElementById('lightbox').addEventListener('click', e => { if (e.target === e.currentTarget) closeLightbox(); });
+
+// ─── WORKSHOPS / CONFERENCES ───
+function openWCModal() { document.getElementById('wc-modal').classList.add('open'); }
+function closeWCModal() { document.getElementById('wc-modal').classList.remove('open'); }
+function addWCItem() {
+  const type = document.getElementById('wc-type-input').value;
+  const title = document.getElementById('wc-title-input').value.trim();
+  const org = document.getElementById('wc-org-input').value.trim();
+  const date = document.getElementById('wc-date-input').value.trim();
+  const notes = document.getElementById('wc-notes-input').value.trim();
+  const cert = document.getElementById('wc-cert-input').checked;
+  if (!title) { alert('Please enter a title.'); return; }
+  const card = document.createElement('div');
+  card.className = 'wc-card'; card.dataset.type = type;
+  card.innerHTML = `${cert ? '<span class="wc-cert">✓ Certificate</span>' : ''}
+    <div class="wc-type ${type}">${type.charAt(0).toUpperCase()+type.slice(1)}</div>
+    <div class="wc-title">${title}</div>
+    ${org ? `<div class="wc-org">${org}</div>` : ''}
+    ${date ? `<div class="wc-date">${date}</div>` : ''}
+    ${notes ? `<div style="font-size:.8rem;color:var(--muted);margin-top:.6rem">${notes}</div>` : ''}`;
+  document.getElementById('wc-grid').appendChild(card);
+  ['wc-title-input','wc-org-input','wc-date-input','wc-notes-input'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('wc-cert-input').checked = false;
+  closeWCModal();
+}
+function filterWC(type, btn) {
+  document.querySelectorAll('#wc-grid .wc-card').forEach(c => {
+    c.style.display = (type === 'all' || c.dataset.type === type) ? '' : 'none';
+  });
+  document.querySelectorAll('.wc-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ─── MY THOUGHTS ───
+function openThoughtModal() {
+  document.getElementById('thought-modal-title').textContent = 'Write a New Post';
+  document.getElementById('thought-write-form').style.display = 'block';
+  document.getElementById('thought-read-view').style.display = 'none';
+  document.getElementById('thought-modal').classList.add('open');
+}
+function closeThoughtModal() { document.getElementById('thought-modal').classList.remove('open'); }
+function expandThought(title, cat, date, body) {
+  document.getElementById('thought-modal-title').textContent = '';
+  document.getElementById('thought-write-form').style.display = 'none';
+  document.getElementById('thought-read-view').style.display = 'block';
+  document.getElementById('th-read-title').textContent = title;
+  document.getElementById('th-read-cat').textContent = cat;
+  document.getElementById('th-read-date').textContent = date;
+  document.getElementById('th-read-body').textContent = body;
+  document.getElementById('thought-modal').classList.add('open');
+}
+function submitThought() {
+  const title = document.getElementById('th-title-input').value.trim();
+  const cat = document.getElementById('th-cat-input').value;
+  const body = document.getElementById('th-body-input').value.trim();
+  if (!title || !body) { alert('Please add a title and body.'); return; }
+  const now = new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  const excerpt = body.slice(0, 120) + (body.length > 120 ? '...' : '');
+  const card = document.createElement('div');
+  card.className = 'thought-card';
+  card.onclick = () => expandThought(title, cat, now, body);
+  card.innerHTML = `<div class="thought-meta"><span class="thought-date">${now}</span><span class="thought-cat">${cat}</span></div>
+    <div class="thought-title">${title}</div>
+    <div class="thought-excerpt">${excerpt}</div>
+    <span class="thought-readmore">Read more →</span>`;
+  document.getElementById('thoughts-list').prepend(card);
+  document.getElementById('th-title-input').value = '';
+  document.getElementById('th-body-input').value = '';
+  closeThoughtModal();
+}
+
+// ─── CV DOWNLOAD ───
+function downloadCV(e) {
+  e.preventDefault();
+  alert('To enable CV download:\n\n1. Upload your CV PDF to Google Drive or Dropbox\n2. Get a shareable link\n3. Replace this alert with: window.open("YOUR_CV_LINK")');
+}
+
+// Close modals on background click
+document.querySelectorAll('.modal-bg').forEach(m => {
+  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
+});
+</script>
+</body>
+</html>
